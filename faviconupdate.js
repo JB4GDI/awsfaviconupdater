@@ -3,7 +3,9 @@ const SERVICES = {
 
 	"acm":								{href: "acm.png"},
 	"apigateway":					{href: "apigateway.png"},
+	"artifact":						{href: "artifact.png"},
 	"athena":							{href: "athena.png"},
+	"batch":							{href: "batch.png"},
 	"cloudformation":			{href: "cloudformation.png"},
 	"cloudfront":					{href: "cloudfront.png"},
 	"cloudsearch":				{href: "cloudsearch.png"},				// Needs favicon
@@ -17,8 +19,9 @@ const SERVICES = {
 	//"cognito":					{href: "cognito.png"},						// Amazon did this one!
 	"datapipeline":				{href: "datapipeline.png"},
 	"directconnect":			{href: "directconnect.png"},
-	"directoryservice":		{href: "directoryservice.png"},		// Amazon did this one!
+	//"directoryservice":	{href: "directoryservice.png"},		// Amazon did this one!
 	"devicefarm":					{href: "devicefarm.png"},
+	"discovery":					{href: "discovery.png"},
 	"dms":								{href: "dms.png"},	
 	"dynamodb":						{href: "dynamodb.png"},	
 	"ec2":								{href: "ec2.png"},
@@ -33,18 +36,23 @@ const SERVICES = {
 	"gamelift":						{href: "gamelift.png"},
 	//"iam":							{href: "iam.png"},								// Amazon did this one!
 	"iot":								{href: "iot.png"},
-	"importexport":				{href: "importexport.png"},
+	"iotsitewise":				{href: "iotsitewise.png"},
+	"importexport":				{href: "snowball.png"},
 	"inspector":					{href: "inspector.png"},
 	"kinesis":						{href: "kinesis.png"},
 	//"lambda":						{href: "lambda.png"},							// Amazon did this one!
 	"lex":								{href: "lex.png"},
 	"ls":									{href: "ls.png"},									// Reminder: This ls means LightSail
 	"machinelearning":		{href: "machinelearning.png"},
+	"managed-services":		{href: "managed-services.png"},
+	"migrationhub":				{href: "discovery.png"},					// The url for this sometimes changes
 	"mobilehub":					{href: "mobilehub.png"},
 	"opsworks":						{href: "opsworks.png"},
+	"pinpoint":						{href: "pinpoint.png"},
 	"polly":							{href: "polly.png"},
 	"rds":								{href: "rds.png"},
 	"redshift":						{href: "redshift.png"},
+	"rekognition":				{href: "rekognition.png"},
 	"route53":						{href: "route53.png"},
 	"s3":									{href: "s3.png"},
 	"servermigration":		{href: "servermigration.png"},
@@ -52,13 +60,15 @@ const SERVICES = {
 	"ses":								{href: "ses.png"},
 	"sns":								{href: "sns.png"},
 	"sqs":								{href: "sqs.png"},
+	"states":							{href: "states.png"},
 	"storagegateway":			{href: "storagegateway.png"},
 	"trustedadvisor":			{href: "trustedadvisor.png"},
 	"swf": 								{href: "swf.png"},								// Needs favicon
-	"waf": 								{href: "waf.png"},								
+	"waf": 								{href: "waf.png"},
 	"workspaces": 				{href: "workspaces.png"},					// This one is bugged for some unknown reason (see if statement below)
-	"workmail": 					{href: "workmail.png"},					
+	"workmail": 					{href: "workmail.png"},
 	"vpc": 								{href: "vpc.png"},
+	"xray": 							{href: "xray.png"},
 	"zocalo": 						{href: "zocalo.png"},
 	
 }
@@ -83,7 +93,7 @@ if (SERVICES.hasOwnProperty(awsServiceName)) {
 
 	// Ok handle the favicon for a few different situations
 	
-	if (awsServiceName == 'workspaces') {
+	if (awsServiceName == 'workspaces' || awsServiceName == 'managed-services') {
 
 		// You may be wondering why this code block is exactly the same as the else statement.  That's because for some
 		// unknown reason, `if ('workspaces' == 'cloudsearch' || 'swf')` resolves to true and it is driving me crazy so
