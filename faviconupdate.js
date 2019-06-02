@@ -8,6 +8,7 @@ const SERVICES = {
 	"batch":							{href: "batch.png"},
 	"cloudformation":			{href: "cloudformation.png"},
 	"cloudfront":					{href: "cloudfront.png"},
+	"cloudhsm":						{href: "cloudhsm.png"},
 	"cloudsearch":				{href: "cloudsearch.png"},				// Needs favicon
 	"cloudtrail":					{href: "cloudtrail.png"},
 	"cloudwatch":					{href: "cloudwatch.png"},
@@ -15,7 +16,9 @@ const SERVICES = {
 	"codecommit":					{href: "codecommit.png"},
 	"codedeploy":					{href: "codedeploy.png"},
 	"codepipeline":				{href: "codepipeline.png"},
+	"codestar":						{href: "codestar.png"},
 	"config":							{href: "config.png"},
+	"connect":						{href: "connect.png"},
 	//"cognito":					{href: "cognito.png"},						// Amazon did this one!
 	"datapipeline":				{href: "datapipeline.png"},
 	"directconnect":			{href: "directconnect.png"},
@@ -34,6 +37,8 @@ const SERVICES = {
 	"elasticmapreduce":		{href: "elasticmapreduce.png"},
 	"glacier":						{href: "glacier.png"},
 	"gamelift":						{href: "gamelift.png"},
+	"glue":								{href: "glue.png"},
+	//"greengrass":				{href: "greengrass.png"},					// Part of iot, and it has a special URL
 	//"iam":							{href: "iam.png"},								// Amazon did this one!
 	"iot":								{href: "iot.png"},
 	"iotsitewise":				{href: "iotsitewise.png"},
@@ -43,9 +48,12 @@ const SERVICES = {
 	//"lambda":						{href: "lambda.png"},							// Amazon did this one!
 	"lex":								{href: "lex.png"},
 	"ls":									{href: "ls.png"},									// Reminder: This ls means LightSail
+	//"macie":						{href: "macie.png"},							// Needs special handling for unique URL
 	"machinelearning":		{href: "machinelearning.png"},
 	"managed-services":		{href: "managed-services.png"},
-	"migrationhub":				{href: "discovery.png"},					// The url for this sometimes changes
+	"mediaconvert":				{href: "mediaconvert.png"},
+	"medialive":					{href: "medialive.png"},
+	"migrationhub":				{href: "migrationhub.png"},				// This used to be Discovery
 	"mobilehub":					{href: "mobilehub.png"},
 	"opsworks":						{href: "opsworks.png"},
 	"pinpoint":						{href: "pinpoint.png"},
