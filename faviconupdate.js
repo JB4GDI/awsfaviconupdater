@@ -1,4 +1,29 @@
+/**
+ * To pull all the icons and their positions automatically from the Resource Groups tab run this in the console
+ **/
+// var icons = {};
+// document.querySelectorAll('span.service-icon.service-icon-navbar.service-icon-size-med').forEach(item => {
+//     let href = item.parentElement.parentElement.parentElement.getAttribute('data-service-href');
+//     if (!item) return;
+//     let reg = /:\/\/([a-z0-9.-]*)\/([a-z0-9.-]*)\/([a-z0-9.-]*)\/*/g;
+//
+// // Break the URL into parts and capture the string after the 'amazon.com/' as awsServiceName
+//     let captureGroupArray = Array.from(href.matchAll(reg));
+//
+//     if (!captureGroupArray || !captureGroupArray.length || captureGroupArray[0].length < 3) return;
+//     let awsServiceName = captureGroupArray[0][2];
+//
+// // For Codesuite URLs (Codebuild/CodeDeploy/CodePipeline/etc...), we need to break the URL apart further to work
+//     if (awsServiceName === 'codesuite') {
+//         awsServiceName = captureGroupArray[0][3];
+//     }
+//     icons[awsServiceName] = item.style.backgroundPosition.replace(/[^0-9 ]/g, '').split(' ').map(x => +x);
+//
+// });
+// JSON.stringify(icons);
+
 // Define all the AWS services here
+//How to get all these icon positions
 const ICONS = {
     "iam": [448, 24],
     "ec2": [3744, 24],
@@ -163,7 +188,6 @@ function setIcon(awsServiceName) {
     link.type = 'image/png';
     link.rel = 'shortcut icon';
     genIcon(position, function (dataUrl) {
-        console.log(dataUrl);
         link.href = dataUrl;
         document.getElementsByTagName('head')[0].appendChild(link);
     });
