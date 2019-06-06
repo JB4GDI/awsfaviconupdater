@@ -72,7 +72,7 @@ const SERVICES = [
 	"trustedadvisor",
 	"swf",
 	"waf",
-	"workspaces", // This one is bugged for some unknown reason (see if statement below)
+	"workspaces",
 	"workmail",
 	"vpc",
 	"xray",
