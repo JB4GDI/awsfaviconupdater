@@ -93,9 +93,9 @@ if (awsServiceName == 'codesuite') {
 
 
 // We have found a match in the URL!
-if (SERVICES.hasOwnProperty(awsServiceName)) {
+if (SERVICES.includes(awsServiceName)) {
 
-	let awsService = SERVICES[awsServiceName];
+	let awsService = {href: awsServiceName + ".png"};
 
 	// Ok handle the favicon for a few different situations
 	
