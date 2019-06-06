@@ -102,50 +102,14 @@ if (awsServiceName == 'codesuite') {
 	awsServiceName = captureGroupArray[0][3];
 }
 
-
 // We have found a match in the URL!
 if (SERVICES.includes(awsServiceName)) {
 
 	let awsService = awsServiceName + ".png";
 
-	if (awsService === 'cloudsearch' || awsService === 'swf') {
-
-		// In these few cases, we need to actually add the favicon tag, because no one at Amazon did this yet!
-
-		// Build the icon and shortcut icon tags so we can add them inside the head tag
-		let iconNode = document.createElement('link');
-		iconNode.setAttribute('rel', 'icon');
-		iconNode.setAttribute('type', 'image/png');
-		iconNode.setAttribute('href', chrome.runtime.getURL(`icons/${awsService}`));
-		let shortcutIconNode = document.createElement('link');
-		shortcutIconNode.setAttribute('rel', 'shortcut icon');
-		shortcutIconNode.setAttribute('type', 'image/png');
-		shortcutIconNode.setAttribute('href', chrome.runtime.getURL(`icons/${awsService}`));
-
-		// Add the tags we just made to the head tag
-
-		document.getElementsByTagName('head')[0].appendChild(iconNode);
-		document.getElementsByTagName('head')[0].appendChild(shortcutIconNode);
-
-	} else {
-
-		// We have a favicon on the page, so just update the favicon tags
-
-		// Get all the <link> tags
-		let linkElements = document.getElementsByTagName('link');
-
-		for (let i = 0; i < linkElements.length; i++) {
-
-			// There are 2 tags that control the favicon.  Update them to be the correct favicon
-			if (linkElements[i].getAttribute('rel') == 'icon') {
-				linkElements[i].setAttribute('type', 'image/png');
-				linkElements[i].setAttribute('href', chrome.runtime.getURL(`icons/${awsService}`));
-			}
-
-			if (linkElements[i].getAttribute('rel') == 'shortcut icon') {
-				linkElements[i].setAttribute('type', 'image/png');
-				linkElements[i].setAttribute('href', chrome.runtime.getURL(`icons/${awsService}`));
-			}
-		}
-	}
+	const link = document.querySelector("link[rel*='icon']") || document.createElement('link');
+	link.type = 'image/png';
+	link.rel = 'shortcut icon';
+	link.href = chrome.runtime.getURL(`icons/${awsService}`);
+	document.getElementsByTagName('head')[0].appendChild(link);
 }
