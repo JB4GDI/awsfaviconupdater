@@ -108,30 +108,7 @@ if (SERVICES.includes(awsServiceName)) {
 
 	let awsService = awsServiceName + ".png";
 
-	// Ok handle the favicon for a few different situations
-	
-	if (awsServiceName == 'workspaces' || awsServiceName == 'managed-services') {
-
-		// You may be wondering why this code block is exactly the same as the else statement.  That's because for some
-		// unknown reason, `if ('workspaces' == 'cloudsearch' || 'swf')` resolves to true and it is driving me crazy so
-		// I'm just forcing the thing to work here.  Uuuuuugh
-		// Try it though!  Just  delete this block and start the if statement at `if (awsService == 'cloudsearch' || 'swf')`
-		// and see what happens!
-
-		let linkElements = document.getElementsByTagName('link');		
-		for (let i = 0; i < linkElements.length; i++) {
-			if (linkElements[i].getAttribute('rel') == 'icon') {
-				linkElements[i].setAttribute('type', 'image/png');
-				linkElements[i].setAttribute('href', chrome.runtime.getURL(`icons/${awsService}`));
-			}
-
-			if (linkElements[i].getAttribute('rel') == 'shortcut icon') {
-				linkElements[i].setAttribute('type', 'image/png');
-				linkElements[i].setAttribute('href', chrome.runtime.getURL(`icons/${awsService}`));
-			}
-		}
-
-	} else if (awsService == 'cloudsearch' || 'swf') {
+	if (awsService === 'cloudsearch' || awsService === 'swf') {
 
 		// In these few cases, we need to actually add the favicon tag, because no one at Amazon did this yet!
 
