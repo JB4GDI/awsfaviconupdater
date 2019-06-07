@@ -1,96 +1,94 @@
 // Define all the AWS services here
-const SERVICES = {
-
-	"acm":								{href: "acm.png"},
-	"apigateway":					{href: "apigateway.png"},
-	"amazon-mq":					{href: "amazon-mq.png"},
-	"appsync":						{href: "appsync.png"},
-	"artifact":						{href: "artifact.png"},
-	"athena":							{href: "athena.png"},
-	"batch":							{href: "batch.png"},
-	"billing":						{href: "billing.png"},
-	"cloudformation":			{href: "cloudformation.png"},
-	"cloudfront":					{href: "cloudfront.png"},
-	"cloudhsm":						{href: "cloudhsm.png"},
-	"cloudsearch":				{href: "cloudsearch.png"},				// Needs favicon
-	"cloudtrail":					{href: "cloudtrail.png"},
-	"cloudwatch":					{href: "cloudwatch.png"},
-	"codebuild":					{href: "codebuild.png"},
-	"codecommit":					{href: "codecommit.png"},
-	"codedeploy":					{href: "codedeploy.png"},
-	"codepipeline":				{href: "codepipeline.png"},
-	"codestar":						{href: "codestar.png"},
-	//"cognito":					{href: "cognito.png"},						// Amazon did this one!
-	"config":							{href: "config.png"},
-	"connect":						{href: "connect.png"},
-	"console":						{href: "console.png"},	
-	"datapipeline":				{href: "datapipeline.png"},
-	"deeplens":						{href: "deeplens.png"},
-	"devicefarm":					{href: "devicefarm.png"},
-	"directconnect":			{href: "directconnect.png"},
-	//"directoryservice":	{href: "directoryservice.png"},		// Amazon did this one!
-	"discovery":					{href: "discovery.png"},
-	"dms":								{href: "dms.png"},	
-	"dynamodb":						{href: "dynamodb.png"},	
-	"ec2":								{href: "ec2.png"},
-	"es":									{href: "es.png"},
-	"efs":								{href: "efs.png"},
-	"ecs":								{href: "ecs.png"},
-	"elasticache":				{href: "elasticache.png"},
-	"elastictranscoder":	{href: "elastictranscoder.png"},
-	"elasticbeanstalk":		{href: "elasticbeanstalk.png"},
-	"elasticmapreduce":		{href: "elasticmapreduce.png"},
-	"glacier":						{href: "glacier.png"},
-	"gamelift":						{href: "gamelift.png"},
-	"glue":								{href: "glue.png"},
-	//"greengrass":				{href: "greengrass.png"},					// Part of iot, and it has a special URL
-	"guardduty":					{href: "guardduty.png"},					
-	//"iam":							{href: "iam.png"},								// Amazon did this one!
-	"iot":								{href: "iot.png"},
-	"iotsitewise":				{href: "iotsitewise.png"},
-	"importexport":				{href: "snowball.png"},
-	"inspector":					{href: "inspector.png"},
-	"kinesis":						{href: "kinesis.png"},
-	//"lambda":						{href: "lambda.png"},							// Amazon did this one!
-	"lex":								{href: "lex.png"},
-	"ls":									{href: "ls.png"},									// Reminder: This ls means LightSail
-	//"macie":						{href: "macie.png"},							// Needs special handling for unique URL
-	"machinelearning":		{href: "machinelearning.png"},
-	"managed-services":		{href: "managed-services.png"},
-	"mediaconvert":				{href: "mediaconvert.png"},
-	"medialive":					{href: "medialive.png"},
-	"mediapackage":				{href: "mediapackage.png"},
-	"mediastore":					{href: "mediastore.png"},
-	"mediatailor":				{href: "mediatailor.png"},
-	"migrationhub":				{href: "migrationhub.png"},				// This used to be Discovery
-	"mobilehub":					{href: "mobilehub.png"},
-	"opsworks":						{href: "opsworks.png"},
-	"pinpoint":						{href: "pinpoint.png"},
-	"polly":							{href: "polly.png"},
-	"rds":								{href: "rds.png"},
-	"redshift":						{href: "redshift.png"},
-	"rekognition":				{href: "rekognition.png"},
-	"route53":						{href: "route53.png"},
-	"s3":									{href: "s3.png"},
-	"servermigration":		{href: "servermigration.png"},
-	"servicecatalog":			{href: "servicecatalog.png"},
-	"ses":								{href: "ses.png"},
-	"sns":								{href: "sns.png"},
-	"sqs":								{href: "sqs.png"},
-	"states":							{href: "states.png"},
-	"storagegateway":			{href: "storagegateway.png"},
-	"sumerian":						{href: "sumerian.png"},
-	"systems-manager":		{href: "systems-manager.png"},
-	"trustedadvisor":			{href: "trustedadvisor.png"},
-	"swf": 								{href: "swf.png"},								// Needs favicon
-	"waf": 								{href: "waf.png"},
-	"workspaces": 				{href: "workspaces.png"},					// This one is bugged for some unknown reason (see if statement below)
-	"workmail": 					{href: "workmail.png"},
-	"vpc": 								{href: "vpc.png"},
-	"xray": 							{href: "xray.png"},
-	"zocalo": 						{href: "zocalo.png"},
-	
-}
+const SERVICES = [
+	"acm",
+	"amazon-mq",
+	"apigateway",
+	"appsync",
+	"artifact",
+	"athena",
+	"batch",
+	"billing",
+	"cloudformation",
+	"cloudfront",
+	"cloudhsm",
+	"cloudsearch",
+	"cloudtrail",
+	"cloudwatch",
+	"codebuild",
+	"codecommit",
+	"codedeploy",
+	"codepipeline",
+	"codestar",
+	//"cognito", // Amazon did this one!
+	"config",
+	"connect",
+	"console",	
+	"datapipeline",
+	"deeplens",
+	"directconnect",
+	//"directoryservice", // Amazon did this one!
+	"devicefarm",
+	"discovery",
+	"dms",
+	"dynamodb",
+	"ec2",
+	"es",
+	"efs",
+	"ecs",
+	"elasticache",
+	"elastictranscoder",
+	"elasticbeanstalk",
+	"elasticmapreduce",
+	"glacier",
+	"gamelift",
+	"glue",
+	//"greengrass", // unique URL
+	"guardduty",
+	//"iam", // Amazon did this one!
+	"iot",
+	"iotsitewise",
+	"importexport",
+	"inspector",
+	"kinesis",
+	//"lambda", // Amazon did this one!
+	"lex",
+	"ls",
+	//"macie", // unique URL
+	"machinelearning",
+	"managed-services",
+	"mediaconvert",
+	"medialive",
+	"mediapackage",
+	"mediastore",
+	"mediatailor",
+	"migrationhub",
+	"mobilehub",
+	"opsworks",
+	"pinpoint",
+	"polly",
+	"rds",
+	"redshift",
+	"rekognition",
+	"route53",
+	"s3",
+	"servermigration",
+	"servicecatalog",
+	"ses",
+	"sns",
+	"sqs",
+	"states",
+	"storagegateway",
+	"sumerian",
+	"systems-manager",
+	"trustedadvisor",
+	"swf",
+	"waf",
+	"workspaces",
+	"workmail",
+	"vpc",
+	"xray",
+	"zocalo",
+];
 
 // Look for the string blocks right after the 'amazon.com/' (ec2/s3/iam/ses/etc...)
 let reg = /:\/\/([a-z0-9.-]*)\/([a-z0-9.-]*)\/([a-z0-9.-]*)\/*/g;
@@ -106,9 +104,9 @@ if (awsServiceName == 'codesuite') {
 
 
 // We have found a match in the URL!
-if (SERVICES.hasOwnProperty(awsServiceName)) {
+if (SERVICES.includes(awsServiceName)) {
 
-	let awsService = SERVICES[awsServiceName];
+	let awsService = {href: awsServiceName + ".png"};
 
 	// Ok handle the favicon for a few different situations
 	
