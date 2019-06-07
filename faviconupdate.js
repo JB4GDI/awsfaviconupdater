@@ -1,10 +1,13 @@
 // Define all the AWS services here
 const SERVICES = [
 	"acm",
+	"amazon-mq",
 	"apigateway",
+	"appsync",
 	"artifact",
 	"athena",
 	"batch",
+	"billing",
 	"cloudformation",
 	"cloudfront",
 	"cloudhsm",
@@ -16,10 +19,12 @@ const SERVICES = [
 	"codedeploy",
 	"codepipeline",
 	"codestar",
+	//"cognito", // Amazon did this one!
 	"config",
 	"connect",
-	//"cognito", // Amazon did this one!
+	"console",	
 	"datapipeline",
+	"deeplens",
 	"directconnect",
 	//"directoryservice", // Amazon did this one!
 	"devicefarm",
@@ -38,6 +43,7 @@ const SERVICES = [
 	"gamelift",
 	"glue",
 	//"greengrass", // unique URL
+	"guardduty",
 	//"iam", // Amazon did this one!
 	"iot",
 	"iotsitewise",
@@ -52,6 +58,9 @@ const SERVICES = [
 	"managed-services",
 	"mediaconvert",
 	"medialive",
+	"mediapackage",
+	"mediastore",
+	"mediatailor",
 	"migrationhub",
 	"mobilehub",
 	"opsworks",
@@ -69,6 +78,8 @@ const SERVICES = [
 	"sqs",
 	"states",
 	"storagegateway",
+	"sumerian",
+	"systems-manager",
 	"trustedadvisor",
 	"swf",
 	"waf",
