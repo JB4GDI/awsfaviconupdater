@@ -106,7 +106,7 @@ if (awsServiceName == 'codesuite') {
 // We have found a match in the URL!
 if (SERVICES.includes(awsServiceName)) {
 
-	let awsService = {href: awsServiceName + ".png"};
+	let awsService = awsServiceName + ".png";
 
 	// Ok handle the favicon for a few different situations
 	
@@ -122,12 +122,12 @@ if (SERVICES.includes(awsServiceName)) {
 		for (let i = 0; i < linkElements.length; i++) {
 			if (linkElements[i].getAttribute('rel') == 'icon') {
 				linkElements[i].setAttribute('type', 'image/png');
-				linkElements[i].setAttribute('href', chrome.runtime.getURL(`icons/${awsService.href}`));
+				linkElements[i].setAttribute('href', chrome.runtime.getURL(`icons/${awsService}`));
 			}
 
 			if (linkElements[i].getAttribute('rel') == 'shortcut icon') {
 				linkElements[i].setAttribute('type', 'image/png');
-				linkElements[i].setAttribute('href', chrome.runtime.getURL(`icons/${awsService.href}`));
+				linkElements[i].setAttribute('href', chrome.runtime.getURL(`icons/${awsService}`));
 			}
 		}
 
@@ -139,11 +139,11 @@ if (SERVICES.includes(awsServiceName)) {
 		let iconNode = document.createElement('link');
 		iconNode.setAttribute('rel', 'icon');
 		iconNode.setAttribute('type', 'image/png');
-		iconNode.setAttribute('href', chrome.runtime.getURL(`icons/${awsService.href}`));
+		iconNode.setAttribute('href', chrome.runtime.getURL(`icons/${awsService}`));
 		let shortcutIconNode = document.createElement('link');
 		shortcutIconNode.setAttribute('rel', 'shortcut icon');
 		shortcutIconNode.setAttribute('type', 'image/png');
-		shortcutIconNode.setAttribute('href', chrome.runtime.getURL(`icons/${awsService.href}`));
+		shortcutIconNode.setAttribute('href', chrome.runtime.getURL(`icons/${awsService}`));
 
 		// Add the tags we just made to the head tag
 
@@ -162,12 +162,12 @@ if (SERVICES.includes(awsServiceName)) {
 			// There are 2 tags that control the favicon.  Update them to be the correct favicon
 			if (linkElements[i].getAttribute('rel') == 'icon') {
 				linkElements[i].setAttribute('type', 'image/png');
-				linkElements[i].setAttribute('href', chrome.runtime.getURL(`icons/${awsService.href}`));
+				linkElements[i].setAttribute('href', chrome.runtime.getURL(`icons/${awsService}`));
 			}
 
 			if (linkElements[i].getAttribute('rel') == 'shortcut icon') {
 				linkElements[i].setAttribute('type', 'image/png');
-				linkElements[i].setAttribute('href', chrome.runtime.getURL(`icons/${awsService.href}`));
+				linkElements[i].setAttribute('href', chrome.runtime.getURL(`icons/${awsService}`));
 			}
 		}
 	}
