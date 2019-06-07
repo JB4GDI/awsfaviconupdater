@@ -93,7 +93,7 @@ function populateIcons() {
         if (!item) return;
         const href = item.parentElement.parentElement.parentElement.getAttribute('data-service-href');
         if (!spriteUrl) {
-            spriteUrl = 'https://api.codetabs.com/v1/proxy?quest=' + getComputedStyle(item).backgroundImage.replace('url("', "").replace('")', '');
+            spriteUrl = getComputedStyle(item).backgroundImage.replace('url("', "").replace('")', '');
         }
         const awsServiceName = extractServiceName(href);
         icons[awsServiceName] = item.style.backgroundPosition.replace(/[^0-9 ]/g, '').split(' ').map(x => +x);
