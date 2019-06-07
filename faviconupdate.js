@@ -1,6 +1,5 @@
 const {icons, spriteUrl} = populateIcons();
 const awsServiceName = extractServiceName(document.URL);
-console.log(awsServiceName, icons, spriteUrl);
 // We have found a match in the URL!
 if (icons.hasOwnProperty(awsServiceName)) {
     setIcon(awsServiceName);
