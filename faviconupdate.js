@@ -3,9 +3,12 @@ const SERVICES = {
 
 	"acm":								{href: "acm.png"},
 	"apigateway":					{href: "apigateway.png"},
+	"amazon-mq":					{href: "amazon-mq.png"},
+	"appsync":						{href: "appsync.png"},
 	"artifact":						{href: "artifact.png"},
 	"athena":							{href: "athena.png"},
 	"batch":							{href: "batch.png"},
+	"billing":						{href: "billing.png"},
 	"cloudformation":			{href: "cloudformation.png"},
 	"cloudfront":					{href: "cloudfront.png"},
 	"cloudhsm":						{href: "cloudhsm.png"},
@@ -17,13 +20,15 @@ const SERVICES = {
 	"codedeploy":					{href: "codedeploy.png"},
 	"codepipeline":				{href: "codepipeline.png"},
 	"codestar":						{href: "codestar.png"},
+	//"cognito":					{href: "cognito.png"},						// Amazon did this one!
 	"config":							{href: "config.png"},
 	"connect":						{href: "connect.png"},
-	//"cognito":					{href: "cognito.png"},						// Amazon did this one!
+	"console":						{href: "console.png"},	
 	"datapipeline":				{href: "datapipeline.png"},
+	"deeplens":						{href: "deeplens.png"},
+	"devicefarm":					{href: "devicefarm.png"},
 	"directconnect":			{href: "directconnect.png"},
 	//"directoryservice":	{href: "directoryservice.png"},		// Amazon did this one!
-	"devicefarm":					{href: "devicefarm.png"},
 	"discovery":					{href: "discovery.png"},
 	"dms":								{href: "dms.png"},	
 	"dynamodb":						{href: "dynamodb.png"},	
@@ -39,6 +44,7 @@ const SERVICES = {
 	"gamelift":						{href: "gamelift.png"},
 	"glue":								{href: "glue.png"},
 	//"greengrass":				{href: "greengrass.png"},					// Part of iot, and it has a special URL
+	"guardduty":					{href: "guardduty.png"},					
 	//"iam":							{href: "iam.png"},								// Amazon did this one!
 	"iot":								{href: "iot.png"},
 	"iotsitewise":				{href: "iotsitewise.png"},
@@ -53,6 +59,9 @@ const SERVICES = {
 	"managed-services":		{href: "managed-services.png"},
 	"mediaconvert":				{href: "mediaconvert.png"},
 	"medialive":					{href: "medialive.png"},
+	"mediapackage":				{href: "mediapackage.png"},
+	"mediastore":					{href: "mediastore.png"},
+	"mediatailor":				{href: "mediatailor.png"},
 	"migrationhub":				{href: "migrationhub.png"},				// This used to be Discovery
 	"mobilehub":					{href: "mobilehub.png"},
 	"opsworks":						{href: "opsworks.png"},
@@ -70,6 +79,8 @@ const SERVICES = {
 	"sqs":								{href: "sqs.png"},
 	"states":							{href: "states.png"},
 	"storagegateway":			{href: "storagegateway.png"},
+	"sumerian":						{href: "sumerian.png"},
+	"systems-manager":		{href: "systems-manager.png"},
 	"trustedadvisor":			{href: "trustedadvisor.png"},
 	"swf": 								{href: "swf.png"},								// Needs favicon
 	"waf": 								{href: "waf.png"},
