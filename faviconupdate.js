@@ -102,16 +102,10 @@ if (awsServiceName == 'codesuite') {
 	awsServiceName = captureGroupArray[0][3];
 }
 
-console.log(awsServiceName);
-
 // We have found a match in the URL!
 if (SERVICES.includes(awsServiceName)) {
 
 	let awsService = awsServiceName + ".png";
-
-	console.log(awsService);
-
-	console.log(`icons/${awsService}`);
 
 	// In a lot of cases, we need to actually add the favicon tag, because no one at Amazon did this yet!
 	if (awsServiceName === 'amazon-mq' ||
