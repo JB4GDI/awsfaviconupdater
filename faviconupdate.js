@@ -1,13 +1,17 @@
 // Define all the AWS services here
 const SERVICES = [
+	//"a4b", // Amazon did this one!
 	"acm",
 	"amazon-mq",
 	"apigateway",
 	"appsync",
 	"artifact",
 	"athena",
+	"awsautoscaling",
 	"batch",
 	"billing",
+	//"budgets", // TODO: This has a special URL (console.aws.amazon.com/billing/home?#/budgets)
+	"cloud9",
 	"cloudformation",
 	"cloudfront",
 	"cloudhsm",
@@ -19,10 +23,12 @@ const SERVICES = [
 	"codedeploy",
 	"codepipeline",
 	"codestar",
+	"comprehend",
 	//"cognito", // Amazon did this one!
 	"config",
 	"connect",
-	"console",	
+	"console",
+	"cost-reports",
 	"datapipeline",
 	"deeplens",
 	"directconnect",
@@ -35,6 +41,7 @@ const SERVICES = [
 	"es",
 	"efs",
 	"ecs",
+	"eks",
 	"elasticache",
 	"elastictranscoder",
 	"elasticbeanstalk",
@@ -50,6 +57,8 @@ const SERVICES = [
 	"importexport",
 	"inspector",
 	"kinesis",
+	"kinesisvideo",
+	"kms",
 	//"lambda", // Amazon did this one!
 	"lex",
 	"ls",
@@ -63,6 +72,7 @@ const SERVICES = [
 	"mediatailor",
 	"migrationhub",
 	"mobilehub",
+	"neptune",
 	"opsworks",
 	"pinpoint",
 	"polly",
@@ -71,15 +81,20 @@ const SERVICES = [
 	"rekognition",
 	"route53",
 	"s3",
+	"sagemaker",
+	//"secretsmanager", // Amazon did this one!
 	"servermigration",
 	"servicecatalog",
 	"ses",
 	"sns",
+	//"singlesignon", // Amazon did this one!
 	"sqs",
 	"states",
 	"storagegateway",
 	"sumerian",
 	"systems-manager",
+	"translate",
+	"transcribe",
 	"trustedadvisor",
 	"swf",
 	"waf",
@@ -112,16 +127,20 @@ if (SERVICES.includes(awsServiceName)) {
 			awsServiceName === 'apigateway' ||
 			awsServiceName === 'appsync' ||
 			awsServiceName === 'athena' ||
+			awsServiceName === 'awsautoscaling' ||
 			awsServiceName === 'batch' ||
 			awsServiceName === 'billing' ||			
+			awsServiceName === 'cloud9' ||
 			awsServiceName === 'cloudhsm' ||
 			awsServiceName === 'cloudsearch' ||
 			awsServiceName === 'codebuild' ||
 			awsServiceName === 'codecommit' ||
 			awsServiceName === 'codedeploy' ||
 			awsServiceName === 'codepipeline' ||
+			awsServiceName === 'comprehend' ||
 			awsServiceName === 'connect' ||
 			awsServiceName === 'console' ||
+			awsServiceName === 'cost-reports' ||
 			awsServiceName === 'deeplens' ||
 			awsServiceName === 'directconnect' ||
 			awsServiceName === 'devicefarm' ||
@@ -130,12 +149,15 @@ if (SERVICES.includes(awsServiceName)) {
 			awsServiceName === 'es' ||
 			awsServiceName === 'efs' ||
 			awsServiceName === 'ecs' ||
+			awsServiceName === 'eks' ||
 			awsServiceName === 'glacier' ||
 			awsServiceName === 'glue' ||
 			awsServiceName === 'guardduty' ||
 			awsServiceName === 'iot' ||
 			awsServiceName === 'importexport' ||
 			awsServiceName === 'kinesis' ||
+			awsServiceName === 'kinesisvideo' ||
+			awsServiceName === 'kms' ||
 			awsServiceName === 'lex' ||
 			awsServiceName === 'ls' ||
 			awsServiceName === 'machinelearning' ||
@@ -148,12 +170,15 @@ if (SERVICES.includes(awsServiceName)) {
 			awsServiceName === 'polly' ||
 			awsServiceName === 'rekognition' ||
 			awsServiceName === 's3' ||
+			awsServiceName === 'sagemaker' ||
 			awsServiceName === 'servermigration' ||
 			awsServiceName === 'sns' ||
 			awsServiceName === 'storagegateway' ||
 			awsServiceName === 'sumerian' ||
 			awsServiceName === 'systems-manager' ||
 			awsServiceName === 'swf' ||
+			awsServiceName === 'transcribe' ||
+			awsServiceName === 'translate' ||
 			awsServiceName === 'waf' ||
 			awsServiceName === 'workmail' ||
 			awsServiceName === 'xray' ||
