@@ -98,6 +98,7 @@ const SERVICES = [
 	"trustedadvisor",
 	"swf",
 	"waf",
+	"wafv2",
 	"workspaces",
 	"workmail",
 	"vpc",
@@ -110,104 +111,110 @@ let reg = /:\/\/([a-z0-9.-]*)\/([a-z0-9.-]*)\/([a-z0-9.-]*)\/*/g;
 
 // Break the URL into parts and capture the string after the 'amazon.com/' as awsServiceName
 let captureGroupArray = Array.from( document.URL.matchAll(reg) );
-let awsServiceName = captureGroupArray[0][2];
 
-// For Codesuite URLs (Codebuild/CodeDeploy/CodePipeline/etc...), we need to break the URL apart further to work
-if (awsServiceName == 'codesuite') {
-	awsServiceName = captureGroupArray[0][3];
-}
+let domain = captureGroupArray[0][1];
 
-// We have found a match in the URL!
-if (SERVICES.includes(awsServiceName)) {
+if (domain !== "docs.aws.amazon.com") {
+	let awsServiceName = captureGroupArray[0][2];
 
-	let awsService = awsServiceName + ".png";
+	// For Codesuite URLs (Codebuild/CodeDeploy/CodePipeline/etc...), we need to break the URL apart further to work
+	if (awsServiceName == 'codesuite') {
+		awsServiceName = captureGroupArray[0][3];
+	}
 
-	// In a lot of cases, we need to actually add the favicon tag, because no one at Amazon did this yet!
-	if (awsServiceName === 'amazon-mq' ||
-			awsServiceName === 'apigateway' ||
-			awsServiceName === 'appsync' ||
-			awsServiceName === 'athena' ||
-			awsServiceName === 'awsautoscaling' ||
-			awsServiceName === 'batch' ||
-			awsServiceName === 'billing' ||			
-			awsServiceName === 'cloud9' ||
-			awsServiceName === 'cloudhsm' ||
-			awsServiceName === 'cloudsearch' ||
-			awsServiceName === 'codebuild' ||
-			awsServiceName === 'codecommit' ||
-			awsServiceName === 'codedeploy' ||
-			awsServiceName === 'codepipeline' ||
-			awsServiceName === 'comprehend' ||
-			awsServiceName === 'connect' ||
-			awsServiceName === 'console' ||
-			awsServiceName === 'cost-reports' ||
-			awsServiceName === 'deeplens' ||
-			awsServiceName === 'directconnect' ||
-			awsServiceName === 'devicefarm' ||
-			awsServiceName === 'discovery' ||
-			awsServiceName === 'dms' ||
-			awsServiceName === 'es' ||
-			awsServiceName === 'efs' ||
-			awsServiceName === 'ecs' ||
-			awsServiceName === 'eks' ||
-			awsServiceName === 'glacier' ||
-			awsServiceName === 'glue' ||
-			awsServiceName === 'guardduty' ||
-			awsServiceName === 'iot' ||
-			awsServiceName === 'importexport' ||
-			awsServiceName === 'kinesis' ||
-			awsServiceName === 'kinesisvideo' ||
-			awsServiceName === 'kms' ||
-			awsServiceName === 'lex' ||
-			awsServiceName === 'ls' ||
-			awsServiceName === 'machinelearning' ||
-			awsServiceName === 'mediaconvert' ||
-			awsServiceName === 'medialive' ||
-			awsServiceName === 'mediapackage' ||
-			awsServiceName === 'mediastore' ||
-			awsServiceName === 'mediatailor' ||
-			awsServiceName === 'migrationhub' ||
-			awsServiceName === 'polly' ||
-			awsServiceName === 'rekognition' ||
-			awsServiceName === 's3' ||
-			awsServiceName === 'sagemaker' ||
-			awsServiceName === 'servermigration' ||
-			awsServiceName === 'sns' ||
-			awsServiceName === 'storagegateway' ||
-			awsServiceName === 'sumerian' ||
-			awsServiceName === 'systems-manager' ||
-			awsServiceName === 'swf' ||
-			awsServiceName === 'transcribe' ||
-			awsServiceName === 'translate' ||
-			awsServiceName === 'waf' ||
-			awsServiceName === 'workmail' ||
-			awsServiceName === 'xray' ||
-			awsServiceName === 'zocalo') {
+	// We have found a match in the URL!
+	if (SERVICES.includes(awsServiceName)) {
 
-		// Build the icon and shortcut icon tags so we can add them inside the head tag
-		let iconNode = document.createElement('link');
-		iconNode.setAttribute('rel', 'icon');
-		iconNode.setAttribute('type', 'image/png');
-		iconNode.setAttribute('href', chrome.runtime.getURL(`icons/${awsService}`));
-		let shortcutIconNode = document.createElement('link');
-		shortcutIconNode.setAttribute('rel', 'shortcut icon');
-		shortcutIconNode.setAttribute('type', 'image/png');
-		shortcutIconNode.setAttribute('href', chrome.runtime.getURL(`icons/${awsService}`));
+		let awsService = awsServiceName + ".png";
 
-		// Add the tags we just made to the head tag
-		document.getElementsByTagName('head')[0].appendChild(iconNode);
-		document.getElementsByTagName('head')[0].appendChild(shortcutIconNode);
-	} else {
-		// We have a favicon on the page, so just update the favicon tags
+		// In a lot of cases, we need to actually add the favicon tag, because no one at Amazon did this yet!
+		if (awsServiceName === 'amazon-mq' ||
+				awsServiceName === 'apigateway' ||
+				awsServiceName === 'appsync' ||
+				awsServiceName === 'athena' ||
+				awsServiceName === 'awsautoscaling' ||
+				awsServiceName === 'batch' ||
+				awsServiceName === 'billing' ||			
+				awsServiceName === 'cloud9' ||
+				awsServiceName === 'cloudhsm' ||
+				awsServiceName === 'cloudsearch' ||
+				awsServiceName === 'codebuild' ||
+				awsServiceName === 'codecommit' ||
+				awsServiceName === 'codedeploy' ||
+				awsServiceName === 'codepipeline' ||
+				awsServiceName === 'comprehend' ||
+				awsServiceName === 'connect' ||
+				awsServiceName === 'console' ||
+				awsServiceName === 'cost-reports' ||
+				awsServiceName === 'deeplens' ||
+				awsServiceName === 'directconnect' ||
+				awsServiceName === 'devicefarm' ||
+				awsServiceName === 'discovery' ||
+				awsServiceName === 'dms' ||
+				awsServiceName === 'es' ||
+				awsServiceName === 'efs' ||
+				awsServiceName === 'ecs' ||
+				awsServiceName === 'eks' ||
+				awsServiceName === 'glacier' ||
+				awsServiceName === 'glue' ||
+				awsServiceName === 'guardduty' ||
+				awsServiceName === 'iot' ||
+				awsServiceName === 'importexport' ||
+				awsServiceName === 'kinesis' ||
+				awsServiceName === 'kinesisvideo' ||
+				awsServiceName === 'kms' ||
+				awsServiceName === 'lex' ||
+				awsServiceName === 'ls' ||
+				awsServiceName === 'machinelearning' ||
+				awsServiceName === 'mediaconvert' ||
+				awsServiceName === 'medialive' ||
+				awsServiceName === 'mediapackage' ||
+				awsServiceName === 'mediastore' ||
+				awsServiceName === 'mediatailor' ||
+				awsServiceName === 'migrationhub' ||
+				awsServiceName === 'polly' ||
+				awsServiceName === 'rekognition' ||
+				awsServiceName === 's3' ||
+				awsServiceName === 'sagemaker' ||
+				awsServiceName === 'servermigration' ||
+				awsServiceName === 'sns' ||
+				awsServiceName === 'storagegateway' ||
+				awsServiceName === 'sumerian' ||
+				awsServiceName === 'systems-manager' ||
+				awsServiceName === 'swf' ||
+				awsServiceName === 'transcribe' ||
+				awsServiceName === 'translate' ||
+				awsServiceName === 'waf' ||
+				awsServiceName === 'wafv2' ||
+				awsServiceName === 'workmail' ||
+				awsServiceName === 'xray' ||
+				awsServiceName === 'zocalo') {
 
-		// Get all the <link> tags
-		let linkElements = document.getElementsByTagName('link');
+			// Build the icon and shortcut icon tags so we can add them inside the head tag
+			let iconNode = document.createElement('link');
+			iconNode.setAttribute('rel', 'icon');
+			iconNode.setAttribute('type', 'image/png');
+			iconNode.setAttribute('href', chrome.runtime.getURL(`icons/${awsService}`));
+			let shortcutIconNode = document.createElement('link');
+			shortcutIconNode.setAttribute('rel', 'shortcut icon');
+			shortcutIconNode.setAttribute('type', 'image/png');
+			shortcutIconNode.setAttribute('href', chrome.runtime.getURL(`icons/${awsService}`));
 
-		for (let i = 0; i < linkElements.length; i++) {
-			// There are 2 tags that control the favicon.  Update them to be the correct favicon
-			if (['icon', 'shortcut icon'].includes(linkElements[i].getAttribute('rel'))) {
-				linkElements[i].setAttribute('type', 'image/png');
-				linkElements[i].setAttribute('href', chrome.runtime.getURL(`icons/${awsService}`));
+			// Add the tags we just made to the head tag
+			document.getElementsByTagName('head')[0].appendChild(iconNode);
+			document.getElementsByTagName('head')[0].appendChild(shortcutIconNode);
+		} else {
+			// We have a favicon on the page, so just update the favicon tags
+
+			// Get all the <link> tags
+			let linkElements = document.getElementsByTagName('link');
+
+			for (let i = 0; i < linkElements.length; i++) {
+				// There are 2 tags that control the favicon.  Update them to be the correct favicon
+				if (['icon', 'shortcut icon'].includes(linkElements[i].getAttribute('rel'))) {
+					linkElements[i].setAttribute('type', 'image/png');
+					linkElements[i].setAttribute('href', chrome.runtime.getURL(`icons/${awsService}`));
+				}
 			}
 		}
 	}
