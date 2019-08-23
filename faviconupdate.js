@@ -38,6 +38,7 @@ const SERVICES = [
 	"dms",
 	"dynamodb",
 	"ec2",
+	"ec2sp",
 	"es",
 	"efs",
 	"ecs",
@@ -103,14 +104,19 @@ const SERVICES = [
 	"workmail",
 	"vpc",
 	"xray",
-	"zocalo",
+	"zocalo", // This is 'workdocs'
 ];
 
 // Look for the string blocks right after the 'amazon.com/' (ec2/s3/iam/ses/etc...)
 let reg = /:\/\/([a-z0-9.-]*)\/([a-z0-9.-]*)\/([a-z0-9.-]*)\/*/g;
+let reg_vpc = /:\/\/([a-z0-9.-]*)\/([a-z0-9.-]*)\/([a-zA-Z0-9\.\-\#\:\?\=]*)\/*/g;
+let reg_full = /:\/\/([a-z0-9.-]*)\/([a-z0-9.-]*)\/([a-z0-9.-]*)\/([a-zA-Z0-9\.\-\#\:\?\=]*)*/g;
 
 // Break the URL into parts and capture the string after the 'amazon.com/' as awsServiceName
 let captureGroupArray = Array.from( document.URL.matchAll(reg) );
+// Note:  This is just to keep my sanity in check.  Most URLs follow the format at the top.  These follow others.
+let captureGroupArrayVPC = Array.from( document.URL.matchAll(reg_vpc) );
+let captureGroupArrayLong = Array.from( document.URL.matchAll(reg_full) );
 
 let domain = captureGroupArray[0][1];
 
@@ -203,6 +209,76 @@ if (domain !== "docs.aws.amazon.com") {
 			// Add the tags we just made to the head tag
 			document.getElementsByTagName('head')[0].appendChild(iconNode);
 			document.getElementsByTagName('head')[0].appendChild(shortcutIconNode);
+		} else if(awsServiceName === 'ec2') {
+
+			let endOfURL = captureGroupArrayLong[0][4]
+
+			if (endOfURL.includes('AutoScalingGroups')) {
+				awsServiceName = 'AutoScalingGroups';
+			} else if (endOfURL.includes('Addresses')) {
+				awsServiceName = 'Addresses';
+			} else if (endOfURL.includes('LoadBalancers')) {
+				awsServiceName = 'LoadBalancers';
+			} else if (endOfURL.includes('Images')) {
+				awsServiceName = 'Images';
+			} else if (endOfURL.includes('NIC')) {
+				awsServiceName = 'NIC';
+			}
+
+			// TODO: Make all this code a function
+			let awsService = awsServiceName + ".png";
+
+			let iconNode = document.createElement('link');
+			iconNode.setAttribute('rel', 'icon');
+			iconNode.setAttribute('type', 'image/png');
+			iconNode.setAttribute('href', chrome.runtime.getURL(`icons/${awsService}`));
+			let shortcutIconNode = document.createElement('link');
+			shortcutIconNode.setAttribute('rel', 'shortcut icon');
+			shortcutIconNode.setAttribute('type', 'image/png');
+			shortcutIconNode.setAttribute('href', chrome.runtime.getURL(`icons/${awsService}`));
+
+			document.getElementsByTagName('head')[0].appendChild(iconNode);
+			document.getElementsByTagName('head')[0].appendChild(shortcutIconNode);
+
+		} else if(awsServiceName === 'vpc') {
+
+			let awsServiceName = captureGroupArrayVPC[0][3];
+
+			if (awsServiceName.includes('RouteTables')) {
+				awsServiceName = 'RouteTables';
+			} else if (awsServiceName.includes('igws')) {
+				awsServiceName = 'igws';
+			} else if (awsServiceName.includes('Addresses')) {
+				awsServiceName = 'Addresses';
+			} else if (awsServiceName.includes('Endpoints')) {
+				awsServiceName = 'Endpoints';
+			} else if (awsServiceName.includes('NatGateways')) {
+				awsServiceName = 'NatGateways';
+			} else if (awsServiceName.includes('PeeringConnections')) {
+				awsServiceName = 'PeeringConnections';
+			} else if (awsServiceName.includes('acls')) {
+				awsServiceName = 'acls';
+			} else if (awsServiceName.includes('CustomerGateways')) {
+				awsServiceName = 'CustomerGateways';
+			}	else {
+				awsServiceName = 'vpc';
+			}
+
+			let awsService = awsServiceName + ".png";
+
+			// TODO: Make all this code a function
+			let iconNode = document.createElement('link');
+			iconNode.setAttribute('rel', 'icon');
+			iconNode.setAttribute('type', 'image/png');
+			iconNode.setAttribute('href', chrome.runtime.getURL(`icons/${awsService}`));
+			let shortcutIconNode = document.createElement('link');
+			shortcutIconNode.setAttribute('rel', 'shortcut icon');
+			shortcutIconNode.setAttribute('type', 'image/png');
+			shortcutIconNode.setAttribute('href', chrome.runtime.getURL(`icons/${awsService}`));
+
+			document.getElementsByTagName('head')[0].appendChild(iconNode);
+			document.getElementsByTagName('head')[0].appendChild(shortcutIconNode);
+
 		} else {
 			// We have a favicon on the page, so just update the favicon tags
 
