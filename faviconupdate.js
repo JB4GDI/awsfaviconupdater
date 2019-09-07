@@ -109,13 +109,13 @@ const SERVICES = [
 
 // Look for the string blocks right after the 'amazon.com/' (ec2/s3/iam/ses/etc...)
 let reg = /:\/\/([a-z0-9.-]*)\/([a-z0-9.-]*)\/([a-z0-9.-]*)\/*/g;
-let reg_vpc = /:\/\/([a-z0-9.-]*)\/([a-z0-9.-]*)\/([a-zA-Z0-9\.\-\#\:\?\=]*)\/*/g;
+let reg_ec2_and_vpc = /:\/\/([a-z0-9.-]*)\/([a-z0-9.-]*)\/([a-zA-Z0-9\.\-\#\:\?\=]*)\/*/g;
 let reg_full = /:\/\/([a-z0-9.-]*)\/([a-z0-9.-]*)\/([a-z0-9.-]*)\/([a-zA-Z0-9\.\-\#\:\?\=]*)*/g;
 
 // Break the URL into parts and capture the string after the 'amazon.com/' as awsServiceName
 let captureGroupArray = Array.from( document.URL.matchAll(reg) );
 // Note:  This is just to keep my sanity in check.  Most URLs follow the format at the top.  These follow others.
-let captureGroupArrayVPC = Array.from( document.URL.matchAll(reg_vpc) );
+let captureGroupArrayEC2AndVPC = Array.from( document.URL.matchAll(reg_ec2_and_vpc) );
 let captureGroupArrayLong = Array.from( document.URL.matchAll(reg_full) );
 
 let domain = captureGroupArray[0][1];
@@ -211,7 +211,15 @@ if (domain !== "docs.aws.amazon.com") {
 			document.getElementsByTagName('head')[0].appendChild(shortcutIconNode);
 		} else if(awsServiceName === 'ec2') {
 
-			let endOfURL = captureGroupArrayLong[0][4]
+			// There is a "v2" url for a bunch of these, and it flips on and off for no reason.  Check for this.
+
+			let endOfURL = ""
+
+			if (captureGroupArray[0][3] == "v2") {
+				endOfURL = captureGroupArrayLong[0][4]
+			} else {
+				endOfURL = captureGroupArrayEC2AndVPC[0][3]
+			}
 
 			if (endOfURL.includes('AutoScalingGroups')) {
 				awsServiceName = 'AutoScalingGroups';
@@ -240,9 +248,13 @@ if (domain !== "docs.aws.amazon.com") {
 			document.getElementsByTagName('head')[0].appendChild(iconNode);
 			document.getElementsByTagName('head')[0].appendChild(shortcutIconNode);
 
+
+
+
+
 		} else if(awsServiceName === 'vpc') {
 
-			let awsServiceName = captureGroupArrayVPC[0][3];
+			let awsServiceName = captureGroupArrayEC2AndVPC[0][3];
 
 			if (awsServiceName.includes('RouteTables')) {
 				awsServiceName = 'RouteTables';
