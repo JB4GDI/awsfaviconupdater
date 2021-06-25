@@ -4,7 +4,7 @@
 
 	"name": "AWS Favicon Update",
 	"description": "IAM shouldn't be the only tab with a unique favicon!  This sets favicons for many AWS services, so your tabs make more sense.",
-	"version": "2.1",
+	"version": "2.2",
 	"author": "Jaime Barriga",
 
 	"icons": {
