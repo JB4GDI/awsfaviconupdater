@@ -38,6 +38,7 @@ const SERVICES = [
 	"dms",
 	"dynamodb",
 	"ec2",
+	"ec2autoscaling",
 	"ec2sp",
 	"es",
 	"efs",
@@ -209,7 +210,7 @@ if (domain !== "docs.aws.amazon.com") {
 			// Add the tags we just made to the head tag
 			document.getElementsByTagName('head')[0].appendChild(iconNode);
 			document.getElementsByTagName('head')[0].appendChild(shortcutIconNode);
-		} else if(awsServiceName === 'ec2') {
+		} else if(awsServiceName === 'ec2' || awsServiceName === 'ec2autoscaling') {
 
 			// There is a "v2" url for a bunch of these, and it flips on and off for no reason.  Check for this.
 
@@ -221,8 +222,9 @@ if (domain !== "docs.aws.amazon.com") {
 				endOfURL = captureGroupArrayEC2AndVPC[0][3]
 			}
 
-			if (endOfURL.includes('AutoScalingGroups')) {
+			if (awsServiceName === 'ec2autoscaling') {
 				awsServiceName = 'AutoScalingGroups';
+				document.title = "Auto Scaling | " + document.title;
 			} else if (endOfURL.includes('Addresses')) {
 				awsServiceName = 'Addresses';
 			} else if (endOfURL.includes('LoadBalancers')) {
